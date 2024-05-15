@@ -3,6 +3,7 @@ import styled from "styled-components";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import LoupeOutlinedIcon from "@mui/icons-material/LoupeOutlined";
+import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
 /* 
 @mui/icons-material @mui/material @emotion/styled @emotion/react
 MUI 아이콘 
@@ -16,6 +17,37 @@ const ToolbarContainer = styled.div`
   /* border: 2px solid red; */
   width: 100vw;
   height: 9vh;
+`;
+const ToolBarAnimation = styled.p`
+  /* width: 30px; */
+  /* height: 30px; */
+  position: absolute;
+  display: inline;
+  -webkit-animation: starMove 7s infinite;
+  animation: starMove 7s infinite;
+  @keyframes starMove {
+    0% {
+      left: 0vw;
+      top: 3vh;
+    }
+    25% {
+      left: 5vw;
+    }
+    50% {
+      /* left: 25vw; */
+      top: 0vh;
+    }
+    25% {
+      left: 10vw;
+    }
+    100% {
+      left: 15vw;
+      top: 3vh;
+    }
+  }
+  > svg {
+    color: yellow;
+  }
 `;
 const ToolBarBtnAlign = styled.div`
   display: flex;
@@ -62,12 +94,19 @@ const PageContent = styled.div`
 `;
 const ContentText = styled.div`
   display: flex;
+  /* border: 2px solid #383f9d; */
+  /* border-radius: 10px; */
   justify-content: center;
+
   font-size: 35px;
   font-weight: bolder;
   color: black;
-
-  width: 100%;
+  background: #45dadf;
+  background: linear-gradient(to right, #522497 25%, #00098a 61%);
+  /* background: linear-gradient(to right, #a70d9d 25%, #4219aa 61%); */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 10px 20px;
 `;
 const ToolBar: React.FC = () => {
   const [buttonState, setButtonState] = useState<string>("initial"); // 타입을 string으로 줌, add / edit / delete
@@ -90,6 +129,9 @@ const ToolBar: React.FC = () => {
   return (
     <div>
       <ToolbarContainer>
+        {/* <ToolBarAnimation>
+          <AutoAwesomeOutlinedIcon />
+        </ToolBarAnimation> */}
         <ToolBarBtnAlign>
           <ToolBtn>
             <LoupeOutlinedIcon onClick={AddClicked} />
